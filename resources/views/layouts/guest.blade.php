@@ -53,11 +53,11 @@
         <!--begin::Page bg image-->
         <style>
             body {
-                background-image: url('../../../assets/images/intflight2.png');
+                background-image: url('/assets/images/intflight2.png');
             }
 
             [data-bs-theme="dark"] body {
-                background-image: url('../../../assets/media/auth/bg4-dark.jpg');
+                background-image: url('/assets/media/auth/bg4-dark.jpg');
             }
         </style>
         <!--end::Page bg image-->
@@ -198,7 +198,7 @@
         <!--end::Authentication - Sign-in-->
     </div>
     <script>
-        var hostUrl = "../../../assets/index.html";
+        var hostUrl = "{{url('assets/index.html')}}";
     </script>
 
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
