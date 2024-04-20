@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\UserACL\PermissionController;
+use App\Http\Controllers\Admin\UserACL\RoleController;
+use App\Http\Controllers\Admin\UserACL\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +29,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+    Route::get('user' , [UserController::class, 'index'])->name('user.index');
+    Route::get('role' , [RoleController::class, 'index'])->name('role.index');
+    Route::get('role-view' , [RoleController::class, 'show'])->name('role-view.show');
+    Route::get('permissions' , [PermissionController::class, 'index'])->name('permissions');
 });
 
 require __DIR__.'/auth.php';

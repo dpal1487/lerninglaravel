@@ -161,4 +161,7 @@
         </div>
         <!--end::Sign up-->
     </form>
+    @section('javascipt')
+    <script src="{{ asset('assets/js/custom/authentication/sign-up/general.js') }}"></script>
+    @endsection
 </x-guest-layout>

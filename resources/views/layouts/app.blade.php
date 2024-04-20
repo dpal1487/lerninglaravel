@@ -98,9 +98,14 @@
                 <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
                     <!--begin::Content wrapper-->
                     <div class="d-flex flex-column flex-column-fluid">
-                        <main>
-                            {{ $slot }}
-                        </main>
+
+                        <div id="kt_app_content" class="app-content  flex-column-fluid ">
+                            <div id="kt_app_content_container" class="app-container  container-fluid ">
+                                <main>
+                                    {{ $slot }}
+                                </main>
+                            </div>
+                        </div>
                         <!--end::Content-->
                     </div>
                     <!--end::Content wrapper-->
@@ -115,7 +120,6 @@
     <script>
         var hostUrl = "{{ url('assets/index.html') }}";
     </script>
-
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
     <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
@@ -123,7 +127,8 @@
 
     <!--begin::Vendors Javascript(used for this page only)-->
     <script src="{{ asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
-    <script src="{{ asset('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+    @yield('javascript')
+
     <!--end::Vendors Javascript-->
 
     <!--begin::Custom Javascript(used for this page only)-->
@@ -135,4 +140,5 @@
     <script src="{{ asset('assets/js/custom/utilities/modals/new-target.js') }}"></script>
     <script src="{{ asset('assets/js/custom/utilities/modals/users-search.js') }}"></script>
 </body>
+
 </html>

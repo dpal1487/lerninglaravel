@@ -80,77 +80,7 @@ var KTSigninGeneral = function() {
                     }).finally(()=>{
                         submitButton.disabled = false
                         submitButton.setAttribute('data-kt-indicator', 'off');
-                    blockUI.release();
-
                     })
-                } else {
-                    // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-                    Swal.fire({
-                        text: "Sorry, looks like there are some errors detected, please try again.",
-                        icon: "error",
-                        buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
-                        customClass: {
-                            confirmButton: "btn btn-primary"
-                        }
-                    });
-                }
-            });
-		});
-    }
-
-    var handleSubmitAjax = function(e) {
-        // Handle form submit
-        submitButton.addEventListener('click', function (e) {
-            // Prevent button default action
-            e.preventDefault();
-
-            // Validate form
-            validator.validate().then(function (status) {
-                if (status == 'Valid') {
-                    // Hide loading indication
-                    submitButton.removeAttribute('data-kt-indicator');
-
-                    // Enable button
-                    submitButton.disabled = false;
-
-                    // Check axios library docs: https://axios-http.com/docs/intro
-                    axios.post('login', {
-                        email: form.querySelector('[name="email"]').value,
-                        password: form.querySelector('[name="password"]').value
-                    }).then(function (response) {
-                        if (response) {
-                            form.querySelector('[name="email"]').value= "";
-                            form.querySelector('[name="password"]').value= "";
-
-                            const redirectUrl = form.getAttribute('data-kt-redirect-url');
-
-                            if (redirectUrl) {
-                                location.href = redirectUrl;
-                            }
-                        } else {
-                            // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-                            Swal.fire({
-                                text: "Sorry, the email or password is incorrect, please try again.",
-                                icon: "error",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn btn-primary"
-                                }
-                            });
-                        }
-                    }).catch(function (error) {
-                        Swal.fire({
-                            text: "Sorry, looks like there are some errors detected, please try again.",
-                            icon: "error",
-                            buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
-                            customClass: {
-                                confirmButton: "btn btn-primary"
-                            }
-                        });
-                    });
                 } else {
                     // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                     Swal.fire({

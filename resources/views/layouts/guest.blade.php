@@ -181,11 +181,11 @@
 
                         <!--begin::Links-->
                         <div class="d-flex fw-semibold text-primary fs-base gap-5">
-                            <a href="../../../pages/team.html" target="_blank">Terms</a>
+                            <a href="{{ url('trem') }}" target="_blank">Terms</a>
 
-                            <a href="../../../pages/pricing/column.html" target="_blank">Plans</a>
+                            <a href="#" target="_blank">Plans</a>
 
-                            <a href="../../../pages/contact.html" target="_blank">Contact Us</a>
+                            <a href="#" target="_blank">Contact Us</a>
                         </div>
                         <!--end::Links-->
                     </div>
@@ -208,8 +208,8 @@
 
 
     <!--begin::Custom Javascript(used for this page only)-->
-    <script src="{{ asset('assets/js/custom/authentication/sign-in/general.js') }}"></script>
-    <script src="{{ asset('assets/js/custom/authentication/sign-up/general.js') }}"></script>
+    @yield('javascipt')
+   
 
 </body>
 
