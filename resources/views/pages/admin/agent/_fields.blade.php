@@ -18,7 +18,9 @@
                             value="{{ @$attribute->name }}" />
                         <!--end::Input-->
                         <div class="text-muted fs-7">Agent Name is required.</div>
-
+                        @error('name')
+                        <div class="error">{{ $message }}</div>
+                    @enderror
                     </div>
 
                 </div>
@@ -29,6 +31,9 @@
                     <input type="email" name="email" class="form-control mb-2" placeholder="Email"
                     value="{{ @$attribute->email }}" />
                     <div class="text-muted fs-7">Email is required.</div>
+                    @error('email')
+                    <div class="error">{{ $message }}</div>
+                @enderror
                 </div>
 
             </div>
@@ -44,6 +49,10 @@
                             value="{{ @$attribute->password }}" />
                         <!--end::Input-->
                         <div class="text-muted fs-7">Password is required.</div>
+
+                        @error('password')
+                        <div class="error">{{ $message }}</div>
+                    @enderror
 
                     </div>
                     <!-- Services details starts -->

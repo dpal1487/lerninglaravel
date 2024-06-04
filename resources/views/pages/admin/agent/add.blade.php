@@ -57,5 +57,16 @@
         <script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
         <script src="{{ asset('assets/js/custom/pages/user/form.js') }}"></script>
         <script src="{{ asset('assets/plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- Include Toastr JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <!-- Toastr Configuration -->
+        <script>
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    toastr.error("{{ $error }}");
+                @endforeach
+            @endif
+        </script>
     @endsection
 </x-app-layout>

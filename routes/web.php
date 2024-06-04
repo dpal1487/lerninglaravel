@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
         Route::prefix('user')->group(function () {
             Route::get('/' , 'index')->name('user.index');
             Route::get('/create' , 'create')->name('user.create');
-            Route::post('/post' , 'store')->name('user.store');
+            Route::post('/store' , 'store')->name('user.store');
             Route::get('{id}/edit' , 'edit')->name('user.edit');
             Route::post('{id}/update' , 'update')->name('user.update');
             Route::delete('{id}/delete', 'destroy')->name('user.delete');
