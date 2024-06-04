@@ -45,10 +45,15 @@
                 </div><!--end:Menu item-->
                 <!--begin:Menu item-->
 
-                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="/agents"><span class="menu-link"><span class="menu-icon"><i
-                    class="ki-duotone ki-abstract-28 fs-2"><span class="path1"></span><span
-                        class="path2"></span></i></span><span
-                    class="menu-title">Agent</span></a><!--end:Menu link--></div>
+                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="/agents"><span
+                            class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-abstract-28 fs-2"><span
+                                        class="path1"></span><span class="path2"></span></i></span><span
+                                class="menu-title">Agent</span></a><!--end:Menu link--></div>
+
+                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="/attendance"><span
+                            class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-abstract-28 fs-2"><span
+                                        class="path1"></span><span class="path2"></span></i></span><span
+                                class="menu-title">Attendance</span></a><!--end:Menu link--></div>
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
                                 class="ki-duotone ki-address-book fs-2"><span class="path1"></span><span
