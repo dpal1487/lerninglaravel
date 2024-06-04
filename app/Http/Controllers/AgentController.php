@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Service;
 use App\Models\Agent;
-use App\Http\Requests\StoreAgentRequest;
-use App\Http\Requests\UpdateAgentRequest;
 use App\Http\Resources\AgentResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; 
 
 class AgentController extends Controller
 {
@@ -23,7 +22,6 @@ class AgentController extends Controller
         $agents = AgentResource::collection($agents);
         return view('pages.agent.index' , compact('agents'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -35,18 +33,55 @@ class AgentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreAgentRequest $request)
+    public function store(Request $request)
     {
-        //
+        // Validate input data
+        $validatedData = $request->validate([
+            'customer_name' => 'required|string|max:255',
+            'company_cost' => 'required|integer',
+            'mark_up' => 'required|string|max:255',
+            'date_of_travel' => 'required|date',
+            'services' => 'required|array',
+            'services.*.service_name' => 'required|string|max:255',
+        ]);
+
+        $userId = Auth::id();
+        $customer_name = $request->input('customer_name');
+        $company_cost = $request->input('company_cost');
+        $mark_up = $request->input('mark_up');
+        $date_of_travel = $request->input('date_of_travel');
+        
+        $agentdetails = Agent::create([
+            'user_id' => $userId, 
+            'customer_name' => $customer_name,
+            'company_cost' => $company_cost,
+            'mark_up' => $mark_up,
+            'date_of_travel' => $date_of_travel,
+        ]);
+
+        // Store services
+        foreach ($validatedData['services'] as $services) {
+            Service::create([
+                'agent_id' => $agentdetails->id, 
+                'service_name' => $services['service_name'],
+            ]);
+        }
+       
+        return response()->json(['message' => 'Agent and services stored successfully.'], 200);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Agent $agent)
+    public function show($id)
     {
-        //
+        // Find the agent by ID and load related services
+        $agent = Agent::findOrFail($id);
+        $agent->load('services'); // Eager load services relationship
+        
+        return view('pages.agent.show', compact('agent'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -59,7 +94,7 @@ class AgentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAgentRequest $request, Agent $agent)
+    public function update(Request $request, Agent $agent)
     {
         //
     }
