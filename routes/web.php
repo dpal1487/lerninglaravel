@@ -32,10 +32,11 @@ Route::middleware('auth')->group(function () {
         Route::prefix('agents')->group(function () {
             Route::get('/' , 'index')->name('agents.index');
             Route::get('/create' , 'create')->name('agents.create');
-            Route::post('/post' , 'store')->name('agents.store');
+            Route::post('/store' , 'store')->name('agents.store');
             Route::get('{id}/edit' , 'edit')->name('agents.edit');
             Route::post('{id}/update' , 'update')->name('agents.update');
             Route::delete('{id}/delete', 'destroy')->name('agents.delete');
+            Route::get('{id}', 'show')->name('agents.show');
         });
     });
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
