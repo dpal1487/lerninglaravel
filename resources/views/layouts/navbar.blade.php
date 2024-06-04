@@ -33,7 +33,6 @@
                 <!--begin::Menu-->
                 <div class="menu menu-rounded menu-column menu-lg-row my-5 my-lg-0 align-items-stretch fw-semibold px-2 px-lg-0"
                     id="kt_app_header_menu" data-kt-menu="true">
-                    {{-- @include('layouts.header.menu-wrapper') --}}
                 </div>
             </div>
             <!--end::Menu wrapper-->
@@ -41,35 +40,10 @@
 
             <!--begin::Navbar-->
             <div class="app-navbar flex-shrink-0">
-                {{-- @include('layouts.header.search') --}}
 
-                <!--begin::Activities-->
-                <div class="app-navbar-item ms-1 ms-md-3">
-                    <!--begin::Drawer toggle-->
-                    <div class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px"
-                        id="kt_activities_toggle">
-                        <i class="ki-duotone ki-notification-on fs-2 fs-lg-1"><span class="path1"></span><span
-                                class="path2"></span><span class="path3"></span><span class="path4"></span><span
-                                class="path5"></span></i>
-                    </div>
-                    <!--end::Drawer toggle-->
-                </div>
-                <!--end::Activities-->
-
-                <!--begin::Notifications-->
-                @include('layouts.header.notification')
-                <!--end::Notifications-->
-
-                <!--begin::Chat-->
-                @include('layouts.header.chat')
-                <!--end::Chat-->
-
-                <!--begin::My apps links-->
-               @include('layouts.header.my-app-links')
-                <!--end::My apps links-->
 
                 <!--begin::Theme mode-->
-                @include('layouts.header.theme')
+                {{-- @include('layouts.header.theme') --}}
                 <!--end::Theme mode-->
 
                 <!--begin::User menu-->

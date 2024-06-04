@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\UserACL\PermissionController;
 use App\Http\Controllers\Admin\UserACL\RoleController;
 use App\Http\Controllers\Admin\UserACL\UserController;
+use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,17 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
+    Route::controller(AgentController::class)->group(function () {
+        Route::prefix('agents')->group(function () {
+            Route::get('/' , 'index')->name('agents.index');
+            Route::get('/create' , 'create')->name('agents.create');
+            Route::post('/post' , 'store')->name('agents.store');
+            Route::get('{id}/edit' , 'edit')->name('agents.edit');
+            Route::post('{id}/update' , 'update')->name('agents.update');
+            Route::delete('{id}/delete', 'destroy')->name('agents.delete');
+        });
+    });
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
