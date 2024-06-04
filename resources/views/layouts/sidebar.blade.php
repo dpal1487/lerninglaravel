@@ -42,7 +42,13 @@
                 <div class="menu-item pt-5"><!--begin:Menu content-->
                     <div class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Pages</span></div>
                     <!--end:Menu content-->
-                </div><!--end:Menu item--><!--begin:Menu item-->
+                </div><!--end:Menu item-->
+                <!--begin:Menu item-->
+
+                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="/agents"><span class="menu-link"><span class="menu-icon"><i
+                    class="ki-duotone ki-abstract-28 fs-2"><span class="path1"></span><span
+                        class="path2"></span></i></span><span
+                    class="menu-title">Agent</span></a><!--end:Menu link--></div>
                 <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                     <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
                                 class="ki-duotone ki-address-book fs-2"><span class="path1"></span><span
@@ -54,7 +60,8 @@
                                     class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                                     class="menu-title">Overview</span></a><!--end:Menu link--></div>
                     </div><!--end:Menu sub-->
-                </div><!--end:Menu item-->
+                </div>
+                <!--end:Menu item-->
                 <!--begin:Menu item-->
                 <div class="menu-item pt-5"><!--begin:Menu content-->
                     <div class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Apps</span></div>
@@ -188,4 +195,3 @@
     </div>
     <!--end::Footer-->
 </div>
-
