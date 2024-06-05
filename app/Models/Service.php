@@ -13,5 +13,10 @@ class Service extends Model
         'agent_id',
         'service_name',
     ];
+    
+    public function agent()
+    {
+        return $this->belongsTo(Agent::class, 'agent_id', 'id');
+    }
   
 }

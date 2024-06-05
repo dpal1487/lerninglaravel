@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserACL\UserController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,11 +23,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 Route::middleware('auth')->group(function () {
+    Route::get('/', [ChartController::class, 'showChartData'])->name('dashboard');
 
     Route::controller(AgentController::class)->group(function () {
         Route::prefix('agents')->group(function () {
