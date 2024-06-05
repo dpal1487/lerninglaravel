@@ -3,7 +3,6 @@
         display: none;
     }
 </style>
-
         <!--end::Card header-->
         <!--begin::Card body-->
         <div class="card-body pt-0">
@@ -49,7 +48,6 @@
                             value="{{ @$user->password }}" />
                         <!--end::Input-->
                         <div class="text-muted fs-7">Password is required.</div>
-
                         @error('password')
                         <div class="error">{{ $message }}</div>
                     @enderror

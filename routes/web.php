@@ -40,10 +40,6 @@ Route::middleware('auth')->group(function () {
         });
     });
 
-
-
-
-
     Route::get('attendance', [AttendanceController::class, 'index'])->name('attendance.index');
     Route::get('attendance/{id}', [AttendanceController::class, 'view'])->name('attendance.view');
 
