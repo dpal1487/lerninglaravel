@@ -88,7 +88,7 @@ var KTAppCalendar = function () {
                     endStr: arg.event.endStr,
                     allDay: arg.event.allDay
                 });
-                
+
                 handleViewEvent();
             },
 
@@ -371,7 +371,7 @@ var KTAppCalendar = function () {
                             // Simulate form submission
                             submitButton.removeAttribute('data-kt-indicator');
 
-                            // Show popup confirmation 
+                            // Show popup confirmation
                             Swal.fire({
                                 text: "New event added to calendar!",
                                 icon: "success",
@@ -425,7 +425,7 @@ var KTAppCalendar = function () {
                             //form.submit(); // Submit form
                         }, 2000);
                     } else {
-                        // Show popup warning 
+                        // Show popup warning
                         Swal.fire({
                             text: "Sorry, looks like there are some errors detected, please try again.",
                             icon: "error",
@@ -490,7 +490,7 @@ var KTAppCalendar = function () {
                             // Simulate form submission
                             submitButton.removeAttribute('data-kt-indicator');
 
-                            // Show popup confirmation 
+                            // Show popup confirmation
                             Swal.fire({
                                 text: "New event added to calendar!",
                                 icon: "success",
@@ -547,7 +547,7 @@ var KTAppCalendar = function () {
                             //form.submit(); // Submit form
                         }, 2000);
                     } else {
-                        // Show popup warning 
+                        // Show popup warning
                         Swal.fire({
                             text: "Sorry, looks like there are some errors detected, please try again.",
                             icon: "error",
@@ -612,7 +612,7 @@ var KTAppCalendar = function () {
                 if (result.value) {
                     calendar.getEventById(data.id).remove();
 
-                    viewModal.hide(); // Hide modal				
+                    viewModal.hide(); // Hide modal
                 } else if (result.dismiss === 'cancel') {
                     Swal.fire({
                         text: "Your event was not deleted!.",
@@ -657,8 +657,8 @@ var KTAppCalendar = function () {
                 }
             }).then(function (result) {
                 if (result.value) {
-                    form.reset(); // Reset form	
-                    modal.hide(); // Hide modal				
+                    form.reset(); // Reset form
+                    modal.hide(); // Hide modal
                 } else if (result.dismiss === 'cancel') {
                     Swal.fire({
                         text: "Your form has not been cancelled!.",
@@ -693,8 +693,8 @@ var KTAppCalendar = function () {
                 }
             }).then(function (result) {
                 if (result.value) {
-                    form.reset(); // Reset form	
-                    modal.hide(); // Hide modal				
+                    form.reset(); // Reset form
+                    modal.hide(); // Hide modal
                 } else if (result.dismiss === 'cancel') {
                     Swal.fire({
                         text: "Your form has not been cancelled!.",
@@ -734,7 +734,7 @@ var KTAppCalendar = function () {
         });
     }
 
-    // Populate form 
+    // Populate form
     const populateForm = () => {
         eventName.value = data.eventName ? data.eventName : '';
         eventDescription.value = data.eventDescription ? data.eventDescription : '';
@@ -785,24 +785,24 @@ var KTAppCalendar = function () {
             // Define variables
             // Add event modal
             const element = document.getElementById('kt_modal_add_event');
-            form = element.querySelector('#kt_modal_add_event_form');
-            eventName = form.querySelector('[name="calendar_event_name"]');
-            eventDescription = form.querySelector('[name="calendar_event_description"]');
-            eventLocation = form.querySelector('[name="calendar_event_location"]');
-            startDatepicker = form.querySelector('#kt_calendar_datepicker_start_date');
-            endDatepicker = form.querySelector('#kt_calendar_datepicker_end_date');
-            startTimepicker = form.querySelector('#kt_calendar_datepicker_start_time');
-            endTimepicker = form.querySelector('#kt_calendar_datepicker_end_time');
-            addButton = document.querySelector('[data-kt-calendar="add"]');
-            submitButton = form.querySelector('#kt_modal_add_event_submit');
-            cancelButton = form.querySelector('#kt_modal_add_event_cancel');
-            closeButton = element.querySelector('#kt_modal_add_event_close');
-            modalTitle = form.querySelector('[data-kt-calendar="title"]');
-            modal = new bootstrap.Modal(element);
+            // form = element.querySelector('#kt_modal_add_event_form');
+            // eventName = form.querySelector('[name="calendar_event_name"]');
+            // eventDescription = form.querySelector('[name="calendar_event_description"]');
+            // eventLocation = form.querySelector('[name="calendar_event_location"]');
+            // startDatepicker = form.querySelector('#kt_calendar_datepicker_start_date');
+            // endDatepicker = form.querySelector('#kt_calendar_datepicker_end_date');
+            // startTimepicker = form.querySelector('#kt_calendar_datepicker_start_time');
+            // endTimepicker = form.querySelector('#kt_calendar_datepicker_end_time');
+            // addButton = document.querySelector('[data-kt-calendar="add"]');
+            // submitButton = form.querySelector('#kt_modal_add_event_submit');
+            // cancelButton = form.querySelector('#kt_modal_add_event_cancel');
+            // closeButton = element.querySelector('#kt_modal_add_event_close');
+            // modalTitle = form.querySelector('[data-kt-calendar="title"]');
+            // modal = new bootstrap.Modal(element);
 
             // View event modal
             const viewElement = document.getElementById('kt_modal_view_event');
-            viewModal = new bootstrap.Modal(viewElement);
+            // viewModal = new bootstrap.Modal(viewElement);
             viewEventName = viewElement.querySelector('[data-kt-calendar="event_name"]');
             viewAllDay = viewElement.querySelector('[data-kt-calendar="all_day"]');
             viewEventDescription = viewElement.querySelector('[data-kt-calendar="event_description"]');

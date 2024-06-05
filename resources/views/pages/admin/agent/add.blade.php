@@ -6,13 +6,13 @@
 <x-app-layout>
 
     <!--begin::Toolbar-->
-    <div class="mt-4">
+    <div class="mt-3">
         <x-header title="Create Agent" />
     </div>
     <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
         <!--begin::Content container-->
         <div id="kt_app_content_container" class="app-container container-xxl">
-            <form class="form d-flex flex-column flex-lg-row" id="agent_form" action="{{ url('agents/store') }}"
+            <form class="form d-flex flex-column flex-lg-row" id="user_form" action="{{ url('user/store') }}"
                 method="POST">
                 @csrf
                 <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
@@ -27,11 +27,11 @@
                         </div>
                         <!--end::Card header-->
                         <!--begin::Aside column-->
-                        @include('pages.agent._fields')
+                        @include('pages.admin.agent._fields')
                     </div>
                     <div class="d-flex justify-content-end">
                         <!--begin::Button-->
-                        <a href="{{ route('agents.index') }}" class="btn btn-light me-5">Cancel</a>
+                        <a href="{{ route('user.index') }}" class="btn btn-light me-5">Cancel</a>
                         <!--end::Button-->
                         <button type="submit" class="btn btn-primary" id="submit">
                             <!--begin::Indicator label-->
@@ -46,7 +46,6 @@
                     </div>
                 </div>
                 <!--end::Main column-->
-
             </form>
         </div>
         <!--end::Content container-->
@@ -56,7 +55,18 @@
         <!--begin::Custom Javascript(used for this page only)-->
         <script src="{{ asset('assets/js/widgets.bundle.js') }}"></script>
         <script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
-        <script src="{{ asset('assets/js/custom/pages/agent/form.js') }}"></script>
+        <script src="{{ asset('assets/js/custom/pages/user/form.js') }}"></script>
         <script src="{{ asset('assets/plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- Include Toastr JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <!-- Toastr Configuration -->
+        <script>
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    toastr.error("{{ $error }}");
+                @endforeach
+            @endif
+        </script>
     @endsection
 </x-app-layout>

@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\UserACL\PermissionController;
-use App\Http\Controllers\Admin\UserACL\RoleController;
-use App\Http\Controllers\Admin\UserACL\UserController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChartController;
@@ -31,24 +30,39 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(AgentController::class)->group(function () {
         Route::prefix('agents')->group(function () {
-            Route::get('/' , 'index')->name('agents.index');
-            Route::get('/create' , 'create')->name('agents.create');
-            Route::post('/store' , 'store')->name('agents.store');
-            Route::get('{id}/edit' , 'edit')->name('agents.edit');
-            Route::post('{id}/update' , 'update')->name('agents.update');
+            Route::get('/', 'index')->name('agents.index');
+            Route::get('/create', 'create')->name('agents.create');
+            Route::post('/store', 'store')->name('agents.store');
+            Route::get('{id}/edit', 'edit')->name('agents.edit');
+            Route::post('{id}/update', 'update')->name('agents.update');
             Route::delete('{id}/delete', 'destroy')->name('agents.delete');
             Route::get('{id}', 'show')->name('agents.show');
         });
     });
+
+
+
+
+
+    Route::get('attendance', [AttendanceController::class, 'index'])->name('attendance.index');
+    Route::get('attendance/{id}', [AttendanceController::class, 'view'])->name('attendance.view');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
-    Route::get('user' , [UserController::class, 'index'])->name('user.index');
-    Route::get('role' , [RoleController::class, 'index'])->name('role.index');
-    Route::get('role-view' , [RoleController::class, 'show'])->name('role-view.show');
-    Route::get('permissions' , [PermissionController::class, 'index'])->name('permissions');
+    Route::middleware(['is_admin'])->group(function () {
+        Route::controller(UserController::class)->group(function () {
+            Route::prefix('user')->group(function () {
+                Route::get('/', 'index')->name('user.index');
+                Route::get('/create', 'create')->name('user.create');
+                Route::post('/store', 'store')->name('user.store');
+                Route::get('{id}/edit', 'edit')->name('user.edit');
+                Route::post('{id}/update', 'update')->name('user.update');
+                Route::delete('{id}/delete', 'destroy')->name('user.delete');
+            });
+        });
+    });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

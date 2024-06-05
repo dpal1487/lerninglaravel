@@ -71,7 +71,7 @@
                 @include('layouts.sidebar')
                 <!-- Page Content -->
                 <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
-                   
+                    <!--begin::Content wrapper-->
                     <div class="d-flex flex-column flex-column-fluid">
 
                         <div id="kt_app_content" class="app-content  flex-column-fluid ">
@@ -81,26 +81,32 @@
                                 </main>
                             </div>
                         </div>
-                   
+                        <!--end::Content-->
                     </div>
-           
+                    <!--end::Content wrapper-->
+                    <!--begin::Footer-->
                     @include('layouts.footer')
-             
+                    <!--end::Footer-->
                 </div>
             </div>
         </div>
-     
+        <!-- Page Heading -->
     </div>
     <script>
         var hostUrl = "{{ url('assets/index.html') }}";
     </script>
-  
+    <!--begin::Global Javascript Bundle(mandatory for all pages)-->
     <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
     <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
-   
+    <!--end::Global Javascript Bundle-->
+
+    <!--begin::Vendors Javascript(used for this page only)-->
     <script src="{{ asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
     @yield('javascript')
 
+    <!--end::Vendors Javascript-->
+
+    <!--begin::Custom Javascript(used for this page only)-->
     <script src="{{ asset('assets/js/widgets.bundle.js') }}"></script>
     <script src="{{ asset('assets/js/custom/widgets.js') }}"></script>
     <script src="{{ asset('assets/js/custom/apps/chat/chat.js') }}"></script>
