@@ -17,7 +17,7 @@
                             value="{{ @$user->name }}" />
                         <!--end::Input-->
                         <div class="text-muted fs-7">Agent Name is required.</div>
-                        @error('name')
+                        @error('customer_name')
                         <div class="error">{{ $message }}</div>
                     @enderror
                     </div>

@@ -126,13 +126,15 @@ var KTSignupGeneral = function() {
                             }
                         })
                     }).catch((error)=>{
+                        toastr.error('Email id alredy exist please user another email');
+                        // console.log(error);
                         if (error.response.status == 400) {
                             toastr.error(error.response.data.message);
                           }
                     }).finally(()=>{
                         submitButton.disabled = false
                         submitButton.setAttribute('data-kt-indicator', 'off');
-                    blockUI.release();
+                    // blockUI.release();
 
                     })
                 } else {

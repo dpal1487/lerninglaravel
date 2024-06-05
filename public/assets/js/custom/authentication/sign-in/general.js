@@ -74,8 +74,18 @@ var KTSigninGeneral = function() {
                             }
                         })
                     }).catch((error)=>{
+                        // console.log("error");
+                            Swal.fire({
+                                text: "Sorry, looks like you are using wrong credentials, please insert right one.",
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn btn-primary"
+                                }
+                            });
                         if (error.response.status == 400) {
-                            toastr.error(error.response.data.message);
+
                           }
                     }).finally(()=>{
                         submitButton.disabled = false

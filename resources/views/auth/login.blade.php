@@ -1,5 +1,5 @@
 <x-guest-layout >
-
+    
     <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" method="POST" action="{{ route('login') }}">
         @csrf
         <!--begin::Heading-->
@@ -20,11 +20,11 @@
 
         <!--begin::Login options-->
         <div class="row g-3 mb-9">
-         
+
         </div>
         <!--end::Login options-->
 
-      
+
 
         <!--begin::Input group--->
         <div class="fv-row mb-8">
