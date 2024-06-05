@@ -34,5 +34,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('endrole', function ($role) {
             return "<?php endif; ?>";
         });
+
+        Gate::define('access-admin-page', function ($user) {
+            return $user->isAdmin(); // Use the User model's isAdmin method
+        });
     }
 }

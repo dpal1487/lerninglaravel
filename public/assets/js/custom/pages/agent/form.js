@@ -227,7 +227,7 @@ var KTAttributeGeneral = function () {
                             }
                         }
                     },
-                   
+
                 },
             }
         );

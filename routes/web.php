@@ -29,11 +29,11 @@ Route::middleware('auth')->group(function () {
 
     Route::controller(AgentController::class)->group(function () {
         Route::prefix('agents')->group(function () {
-            Route::get('/' , 'index')->name('agents.index');
-            Route::get('/create' , 'create')->name('agents.create');
-            Route::post('/store' , 'store')->name('agents.store');
-            Route::get('{id}/edit' , 'edit')->name('agents.edit');
-            Route::post('{id}/update' , 'update')->name('agents.update');
+            Route::get('/', 'index')->name('agents.index');
+            Route::get('/create', 'create')->name('agents.create');
+            Route::post('/store', 'store')->name('agents.store');
+            Route::get('{id}/edit', 'edit')->name('agents.edit');
+            Route::post('{id}/update', 'update')->name('agents.update');
             Route::delete('{id}/delete', 'destroy')->name('agents.delete');
             Route::get('{id}', 'show')->name('agents.show');
         });
@@ -41,25 +41,27 @@ Route::middleware('auth')->group(function () {
 
 
 
-    Route::controller(UserController::class)->group(function () {
-        Route::prefix('user')->group(function () {
-            Route::get('/' , 'index')->name('user.index');
-            Route::get('/create' , 'create')->name('user.create');
-            Route::post('/store' , 'store')->name('user.store');
-            Route::get('{id}/edit' , 'edit')->name('user.edit');
-            Route::post('{id}/update' , 'update')->name('user.update');
-            Route::delete('{id}/delete', 'destroy')->name('user.delete');
-        });
-    });
 
-    Route::get('attendance' , [AttendanceController::class , 'index'])->name('attendance.index');
-    Route::get('attendance/{id}' , [AttendanceController::class , 'view'])->name('attendance.view');
+
+    Route::get('attendance', [AttendanceController::class, 'index'])->name('attendance.index');
+    Route::get('attendance/{id}', [AttendanceController::class, 'view'])->name('attendance.view');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
+    Route::middleware(['is_admin'])->group(function () {
+        Route::controller(UserController::class)->group(function () {
+            Route::prefix('user')->group(function () {
+                Route::get('/', 'index')->name('user.index');
+                Route::get('/create', 'create')->name('user.create');
+                Route::post('/store', 'store')->name('user.store');
+                Route::get('{id}/edit', 'edit')->name('user.edit');
+                Route::post('{id}/update', 'update')->name('user.update');
+                Route::delete('{id}/delete', 'destroy')->name('user.delete');
+            });
+        });
+    });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

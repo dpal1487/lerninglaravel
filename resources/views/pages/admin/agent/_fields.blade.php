@@ -15,7 +15,7 @@
                     <div class="">
                         <!--begin::Input-->
                         <input type="text" name="name" class="form-control mb-2" placeholder="Agent Name"
-                            value="{{ @$attribute->name }}" />
+                            value="{{ @$user->name }}" />
                         <!--end::Input-->
                         <div class="text-muted fs-7">Agent Name is required.</div>
                         @error('name')
@@ -29,7 +29,7 @@
                     <label class="form-label required">Email</label>
                     <!--end::Label-->
                     <input type="email" name="email" class="form-control mb-2" placeholder="Email"
-                    value="{{ @$attribute->email }}" />
+                    value="{{ @$user->email }}" />
                     <div class="text-muted fs-7">Email is required.</div>
                     @error('email')
                     <div class="error">{{ $message }}</div>
@@ -46,7 +46,7 @@
                     <div class="">
                         <!--begin::Input-->
                         <input type="password" name="password" class="form-control mb-2" placeholder="Password"
-                            value="{{ @$attribute->password }}" />
+                            value="{{ @$user->password }}" />
                         <!--end::Input-->
                         <div class="text-muted fs-7">Password is required.</div>
 

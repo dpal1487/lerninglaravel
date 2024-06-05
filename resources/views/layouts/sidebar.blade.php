@@ -45,10 +45,22 @@
                 </div><!--end:Menu item-->
                 <!--begin:Menu item-->
 
-                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="/agents"><span class="menu-link"><span class="menu-icon"><i
-                    class="ki-duotone ki-abstract-28 fs-2"><span class="path1"></span><span
-                        class="path2"></span></i></span><span
-                    class="menu-title">Agent</span></a><!--end:Menu link--></div>
+                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="/agents"><span
+                            class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-abstract-28 fs-2"><span
+                                        class="path1"></span><span class="path2"></span></i></span><span
+                                class="menu-title">Sales</span></a><!--end:Menu link--></div>
+                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="/attendance"><span
+                            class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-abstract-28 fs-2"><span
+                                        class="path1"></span><span class="path2"></span></i></span><span
+                                class="menu-title">Attendance</span></a><!--end:Menu link--></div>
+                                @if (auth()->user()->is_admin == 1)
+                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="/user"><span
+                                            class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-abstract-28 fs-2"><span
+                                                        class="path1"></span><span class="path2"></span></i></span><span
+                                                class="menu-title">User</span></a><!--end:Menu link--></div>
+                                @endif
+
+
 
 
             </div>

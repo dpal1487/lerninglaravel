@@ -26,7 +26,7 @@
                 </div>
             </div>
 
-        
+
             <div class="row g-3">
                 <div class="mb-10 fv-row col-6">
                     <label class="required form-label">Company Cost</label>
@@ -51,7 +51,7 @@
                 </div>
 
             </div>
-           
+
               <!--begin::Input group-->
               <div class="row g-3">
                 <div class="fv-row col-6">
@@ -66,20 +66,18 @@
 
                     </div>
                     <!-- Services details starts -->
-           
+
             <!-- Services  details ends -->
-                </div>  
+                </div>
                 <div class="mb-10 fv-row col-6">
-                    <div class="card border-0 shadow">
                         <div id="services" class="card-body py-0"></div>
-                        <div class="card-footer bg-white border-0">
+                        <div class="card-footer  border-0">
                             <button type="button" id="add-services" class="btn btn-primary">
                                 Add Services
                             </button>
                         </div>
-                    </div>
 
                 </div>
             </div>
         </div>
-   
+

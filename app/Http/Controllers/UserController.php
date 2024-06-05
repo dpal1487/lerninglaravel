@@ -12,7 +12,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('pages.admin.agent.index');
+        $agents = User::all();
+        return view('pages.admin.agent.index', compact('agents'));
     }
 
     public function create()
@@ -58,7 +59,7 @@ class UserController extends Controller
 
         return response()->json(['message' => 'Agent updatedd successfully.'], 200);
     }
-    public function destory($id)
+    public function destroy($id)
     {
         $user = User::where('id' , $id)->first();
 

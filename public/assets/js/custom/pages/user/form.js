@@ -83,6 +83,7 @@ var KTSigninGeneral = function() {
                                 confirmButton: "btn btn-primary"
                             }
                         }).then(function (result) {
+                            console.log(result);
                             if(result.value){
                                 window.location.assign('/user');
                             }

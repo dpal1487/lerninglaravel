@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\Admin\LoginController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -35,6 +36,15 @@ Route::middleware('guest')->group(function () {
                 ->name('password.store');
 });
 
+
+Route::middleware('guest:admin')->prefix('admin')->group( function () {
+
+    Route::get('/', [LoginController::class, 'create']);
+    Route::post('login', [LoginController::class, 'store'])->name('admin.login');
+
+});
+
+
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
                 ->name('verification.notice');
@@ -56,4 +66,12 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+});
+
+Route::middleware('auth:admin')->prefix('admin')->group( function () {
+
+    Route::post('logout', [LoginController::class, 'destroy'])->name('admin.logout');
+
+    Route::view('/dashboard','admin.dashboard');
+
 });

@@ -2,6 +2,7 @@
 
 // Class definition
 var KTAppEcommerceCategories = function () {
+
     // Shared variables
     var table;
 
@@ -11,7 +12,7 @@ var KTAppEcommerceCategories = function () {
     // Delete cateogry
     var handleDeleteRows = () => {
         // Select all delete buttons
-        const deleteButtons = table.querySelectorAll('[banner-table="delete_row"]');
+        const deleteButtons = table.querySelectorAll('[user-table="delete_row"]');
 
         deleteButtons.forEach(d => {
             // Delete button on click
@@ -22,11 +23,11 @@ var KTAppEcommerceCategories = function () {
                 const parent = e.target.closest('tr');
                 var id = $(this).data('id');
                 // Get category name
-                const bannerName = parent.querySelector('[banners-filter="banner_title"]').innerText;
+                const userName = parent.querySelector('[user-filter="user_title"]').innerText;
 
                 // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
                 Swal.fire({
-                    text: "Are you sure you want to delete " + bannerName + "?",
+                    text: "Are you sure you want to delete " + userName + "?",
                     icon: "warning",
                     showCancelButton: true,
                     buttonsStyling: true,
@@ -37,10 +38,10 @@ var KTAppEcommerceCategories = function () {
                         cancelButton: "btn fw-bold btn-active-light-primary"
                     }
                 }).then(function (result) {
-                    blockUI.block();
+                    // blockUI.block();
                     if (result.value) {
                         axios
-                        .delete("/banner/" + id +"/delete")
+                        .delete("/user/" + id +"/delete")
                         .then((response) => {
                           toastr.success(response.data.message);
                           $(parent).remove().draw();
@@ -52,7 +53,7 @@ var KTAppEcommerceCategories = function () {
                         });
                     } else if (result.dismiss === 'cancel') {
                         Swal.fire({
-                            text: bannerName + " was not deleted.",
+                            text: userName + " was not deleted.",
                             icon: "error",
                             buttonsStyling: false,
                             confirmButtonText: "Ok, got it!",
@@ -61,7 +62,7 @@ var KTAppEcommerceCategories = function () {
                             }
                         });
                     }
-                }).finally(()=>blockUI.release());
+                });
             })
         });
     }
@@ -70,7 +71,9 @@ var KTAppEcommerceCategories = function () {
     // Public methods
     return {
         init: function () {
-            table = document.querySelector('#banner_table');
+            table = document.querySelector('#user_table');
+
+            // alert(table)
             if (!table) {
                 return;
             }

@@ -73,16 +73,18 @@
                             <th>Mark Up</th>
                             <th>Date of Travel</th>
                             <th>Service Name</th>
-                          
+
                         </tr>
                         <!--end::Table row-->
                     </thead>
                     <!--end::Table head-->
                     <!--begin::Table body-->
                     <tbody class="fw-semibold text-gray-600">
+                      
+
                         @foreach ($agents as $agent)
-                            <tr> 
-                                <td>{{$loop->iteration }}</td>  
+                            <tr>
+                                <td>{{$loop->iteration }}</td>
                                 <td>{{ $agent->customer_name }}</td>
                                 <td>{{ $agent->company_cost }}</td>
                                 <td>{{ $agent->mark_up }}</td>
@@ -92,7 +94,7 @@
                                         <div>{{ $service->service_name }}</div>
                                     @endforeach
                                 </td>
-                             
+
                             </tr>
                         @endforeach
                     </tbody>
