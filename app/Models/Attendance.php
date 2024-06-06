@@ -22,8 +22,9 @@ class Attendance extends Model
         parent::boot();
 
         static::creating(function ($attendance) {
+            $user = $attendance->user;
             $checkInTime = Carbon::parse($attendance->check_in);
-            if ($checkInTime->hour >= 11) {
+            if ($checkInTime->hour >= $user->shift_time) {
                 $attendance->status = 'half_day';
             } else {
                 $attendance->status = 'full_day';

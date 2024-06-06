@@ -37,10 +37,17 @@ var KTSigninGeneral = function() {
                             }
                         }
                     },
-                    password: {
+                    // password: {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'The Password field is required'
+                    //         }
+                    //     }
+                    // },
+                    shift_time:{
                         validators: {
                             notEmpty: {
-                                message: 'The Password field is required'
+                                message: 'The shift time field is required'
                             }
                         }
                     }
@@ -83,15 +90,23 @@ var KTSigninGeneral = function() {
                                 confirmButton: "btn btn-primary"
                             }
                         }).then(function (result) {
-                            console.log(result);
+                            // console.log(result);
                             if(result.value){
                                 window.location.assign('/user');
                             }
                         })
                     }).catch((error)=>{
-                        if (error.response.status == 400) {
-                            toastr.error(error.response.data.message);
-                          }
+
+                        if (error.response.status === 422) {  // Validation error
+                            let errorMessages = error.response.data.errors;
+                            for (let field in errorMessages) {
+                                errorMessages[field].forEach(error => {
+                                    toastr.error(error);
+                                });
+                            }
+                        } else {
+                            toastr.error('An unexpected error occurred. Please try again.');
+                        }
                     }).finally(()=>{
                         submitButton.disabled = false
                         submitButton.setAttribute('data-kt-indicator', 'off');

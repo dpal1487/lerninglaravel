@@ -74,7 +74,7 @@
                                             <!--begin::Title-->
                                             <a href="/attendance/{{ $attendance->id}}" class="text-gray-800 text-hover-primary fs-5 fw-bold">
                                                 <!--end::Title-->
-                                                {{ $attendance->user->name }}
+                                                {{ $attendance?->user?->name }}
                                             </a>
                                         </div>
                                     </td>
@@ -98,11 +98,7 @@
                         @endforeach
                     </tbody>
                 </table>
-            <div class="row">
-                <div class="col-sm-12 d-flex align-items-center justify-content-center justify-content-md-end">
-                        {{ $attendances->links() }}
-                </div>
-            </div>
+                {!! $attendances->withQueryString()->links('pagination::bootstrap-5') !!}
             </div>
         </div>
     </div>
